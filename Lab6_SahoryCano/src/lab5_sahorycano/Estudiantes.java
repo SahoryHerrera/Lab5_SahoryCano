@@ -21,11 +21,13 @@ public class Estudiantes {
 
     }
 
-    public Estudiantes(String nombre, String apellido, String sexo,int codigo) {
+    public Estudiantes(String nombre, String apellido, String sexo,int edad,int codigo) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.sexo = sexo;
+        this.edad= edad;
         this.codigo = codigo;
+       
     }
 
     public String getNombre() {

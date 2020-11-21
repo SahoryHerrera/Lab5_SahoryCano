@@ -11,11 +11,11 @@ package lab5_sahorycano;
  */
 public class Clases {
 
-    protected String Nombre;
-    protected String Sección;
-    protected int edificio;
-    protected int salon;
-    protected String Aire_Acondicionado;
+    private String Nombre;
+    private String Sección;
+    private int edificio;
+    private int salon;
+    private String Aire_Acondicionado;
 
     public Clases() {
 
@@ -71,9 +71,7 @@ public class Clases {
 
     @Override
     public String toString() {
-        return "Clases{" + "Nombre=" + Nombre + '}';
+        return Nombre;
     }
-    
-    
 
 }
