@@ -38,6 +38,7 @@ public class Principal extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         grupo_clases = new javax.swing.ButtonGroup();
         Genero = new javax.swing.ButtonGroup();
+        carreras = new javax.swing.ButtonGroup();
         jPanel2 = new javax.swing.JPanel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel3 = new javax.swing.JPanel();
@@ -75,17 +76,19 @@ public class Principal extends javax.swing.JFrame {
         jPanel10 = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jComboBox3 = new javax.swing.JComboBox<>();
+        cbolicenciatura = new javax.swing.JComboBox<>();
+        cboingenieria = new javax.swing.JComboBox<>();
+        cbocienciassalud = new javax.swing.JComboBox<>();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jList3 = new javax.swing.JList<>();
+        listacarrera = new javax.swing.JList<>();
         jLabel29 = new javax.swing.JLabel();
         jLabel31 = new javax.swing.JLabel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jRadioButton3 = new javax.swing.JRadioButton();
-        jButton1 = new javax.swing.JButton();
+        licenciatura = new javax.swing.JRadioButton();
+        Ingenieria = new javax.swing.JRadioButton();
+        CienciasSalud = new javax.swing.JRadioButton();
+        btnagregarcarrera = new javax.swing.JButton();
+        costo = new javax.swing.JFormattedTextField();
+        jefesito = new javax.swing.JTextField();
         jPanel6 = new javax.swing.JPanel();
         jPanel11 = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
@@ -380,41 +383,57 @@ public class Principal extends javax.swing.JFrame {
 
         jLabel18.setText("Jefe de Carrera:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbolicenciatura.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Finanzas", "Derecho", "Administración de Empresas", " Diseño", "Gráfico ", " Mercadotecnia", " " }));
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cboingenieria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sistemas Computacionales", "Industrial de Sistemas", "Mecatrónica", "Biomédica ", "Energía" }));
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbocienciassalud.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Medicina ", " Cirugía", "Odontología", "Nutrición ", "Terapia Física", " Ocupacional." }));
 
-        jScrollPane3.setViewportView(jList3);
+        listacarrera.setModel(new DefaultListModel());
+        jScrollPane3.setViewportView(listacarrera);
 
         jLabel29.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel29.setText("Agregar Carrera");
 
         jLabel31.setText("Listar Carrera");
 
-        jRadioButton1.setText("Licenciatura");
-        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+        carreras.add(licenciatura);
+        licenciatura.setText("Licenciatura");
+        licenciatura.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton1ActionPerformed(evt);
+                licenciaturaActionPerformed(evt);
             }
         });
 
-        jRadioButton2.setText("Ingenieria");
-        jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
+        carreras.add(Ingenieria);
+        Ingenieria.setText("Ingenieria");
+        Ingenieria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton2ActionPerformed(evt);
+                IngenieriaActionPerformed(evt);
             }
         });
 
-        jRadioButton3.setText("Ciencias de la carrera");
-        jRadioButton3.addActionListener(new java.awt.event.ActionListener() {
+        carreras.add(CienciasSalud);
+        CienciasSalud.setText("Ciencias de la Salud");
+        CienciasSalud.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton3ActionPerformed(evt);
+                CienciasSaludActionPerformed(evt);
             }
         });
 
-        jButton1.setText("Agregar Carrera");
+        btnagregarcarrera.setText("Agregar Carrera");
+        btnagregarcarrera.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnagregarcarreraMouseClicked(evt);
+            }
+        });
+        btnagregarcarrera.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnagregarcarreraActionPerformed(evt);
+            }
+        });
+
+        costo.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
@@ -422,18 +441,24 @@ public class Principal extends javax.swing.JFrame {
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel10Layout.createSequentialGroup()
                 .addGap(75, 75, 75)
-                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jRadioButton2, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jRadioButton1, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jRadioButton3, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel18, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel17, javax.swing.GroupLayout.Alignment.LEADING))
-                .addGap(46, 46, 46)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
+                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(Ingenieria, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(licenciatura, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(CienciasSalud, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel18, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addGap(13, 13, 13))
+                    .addGroup(jPanel10Layout.createSequentialGroup()
+                        .addComponent(jLabel17)
+                        .addGap(58, 58, 58)))
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(costo, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cboingenieria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbocienciassalud, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbolicenciatura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jefesito, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(51, 51, 51))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
@@ -446,7 +471,7 @@ public class Principal extends javax.swing.JFrame {
                         .addComponent(jLabel31)
                         .addGap(149, 149, 149))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
-                        .addComponent(jButton1)
+                        .addComponent(btnagregarcarrera)
                         .addGap(116, 116, 116))))
         );
         jPanel10Layout.setVerticalGroup(
@@ -463,22 +488,26 @@ public class Principal extends javax.swing.JFrame {
                     .addGroup(jPanel10Layout.createSequentialGroup()
                         .addGap(38, 38, 38)
                         .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jRadioButton1)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(licenciatura)
+                            .addComponent(cbolicenciatura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jRadioButton2)
-                            .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(Ingenieria)
+                            .addComponent(cboingenieria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(26, 26, 26)
                         .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jRadioButton3)
-                            .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(41, 41, 41)
-                        .addComponent(jLabel17)
-                        .addGap(36, 36, 36)
-                        .addComponent(jLabel18)))
+                            .addComponent(CienciasSalud)
+                            .addComponent(cbocienciassalud, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(38, 38, 38)
+                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel17)
+                            .addComponent(costo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(30, 30, 30)
+                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel18)
+                            .addComponent(jefesito, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(28, 28, 28)
-                .addComponent(jButton1)
+                .addComponent(btnagregarcarrera)
                 .addContainerGap(62, Short.MAX_VALUE))
         );
 
@@ -719,17 +748,17 @@ public class Principal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
+    private void licenciaturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_licenciaturaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton1ActionPerformed
+    }//GEN-LAST:event_licenciaturaActionPerformed
 
-    private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
+    private void IngenieriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IngenieriaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton2ActionPerformed
+    }//GEN-LAST:event_IngenieriaActionPerformed
 
-    private void jRadioButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton3ActionPerformed
+    private void CienciasSaludActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CienciasSaludActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton3ActionPerformed
+    }//GEN-LAST:event_CienciasSaludActionPerformed
 
     private void btnagregar_EstudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnagregar_EstudianteActionPerformed
         // TODO add your handling code here:
@@ -813,24 +842,60 @@ public class Principal extends javax.swing.JFrame {
 
     private void btn_agregarmaestroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_agregarmaestroMouseClicked
         // TODO add your handling code here:
+        try {
+            DefaultListModel modelo
+                    = (DefaultListModel) lista_maestro.getModel();
 
-        DefaultListModel modelo
-                = (DefaultListModel) lista_maestro.getModel();
+            modelo.addElement(new Maestros(Nombre.getText(),
+                    Apellidos.getText(),
+                    Integer.parseInt(this.edad.getText()),
+                    Integer.parseInt(this.Salario.getText()))
+            );
 
-        modelo.addElement(new Maestros(Nombre.getText(),
-                Apellidos.getText(),
-                Integer.parseInt(this.edad.getText()),
-                Integer.parseInt(this.Salario.getText()))
-        );
-
-       lista_maestro.setModel(modelo);
-        Nombre.setText("");
-        Apellidos.setText("");
-        edad.setText("");
-        Salario.setText("");
+            lista_maestro.setModel(modelo);
+            Nombre.setText("");
+            Apellidos.setText("");
+            edad.setText("");
+            Salario.setText("");
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Ocurrio un error y no se guardaron los datos");
+        } // Fin Try Catch
 
 
     }//GEN-LAST:event_btn_agregarmaestroMouseClicked
+
+    private void btnagregarcarreraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnagregarcarreraMouseClicked
+        // TODO add your handling code here:
+        
+        DefaultListModel modelo = (DefaultListModel) listacarrera.getModel();
+
+        String carrera;
+      
+        
+        if (licenciatura.isSelected()) {
+            carrera = "Licenciatura";
+        } else if (Ingenieria.isSelected()){
+            carrera = "Ingenieria";
+        } else {
+            carrera = "Ciencias de la salud";
+        }
+          
+        
+        modelo.addElement(new Carrera ((String) carrera,
+             
+                Integer.parseInt(this.costo.getText()),
+               jefesito.getText())
+        );
+        listacarrera.setModel(modelo);
+        costo.setText("");
+        jefesito.setText("");
+    
+    }//GEN-LAST:event_btnagregarcarreraMouseClicked
+
+    private void btnagregarcarreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnagregarcarreraActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnagregarcarreraActionPerformed
 
     /**
      * @param args the command line arguments
@@ -869,19 +934,23 @@ public class Principal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Apellidos;
+    private javax.swing.JRadioButton CienciasSalud;
     private javax.swing.ButtonGroup Genero;
+    private javax.swing.JRadioButton Ingenieria;
     private javax.swing.JTextField Nombre;
     private javax.swing.JFormattedTextField Salario;
     private javax.swing.JTextField apellido;
     private javax.swing.JButton btn_agregarmaestro;
     private javax.swing.JButton btn_clases;
     private javax.swing.JButton btnagregar_Estudiante;
+    private javax.swing.JButton btnagregarcarrera;
+    private javax.swing.ButtonGroup carreras;
+    private javax.swing.JComboBox<String> cbocienciassalud;
+    private javax.swing.JComboBox<String> cboingenieria;
+    private javax.swing.JComboBox<String> cbolicenciatura;
+    private javax.swing.JFormattedTextField costo;
     private javax.swing.JFormattedTextField edad;
     private javax.swing.ButtonGroup grupo_clases;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JFormattedTextField jF_edificio;
     private javax.swing.JFormattedTextField jF_salon;
     private javax.swing.JLabel jLabel1;
@@ -908,7 +977,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JList<String> jList3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
@@ -922,9 +990,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton3;
     private javax.swing.JRadioButton jRadioButton4;
     private javax.swing.JRadioButton jRadioButton5;
     private javax.swing.JRadioButton jRadioButton6;
@@ -935,9 +1000,12 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JTextField jT_nombre_clase;
     private javax.swing.JTextField jT_seccion;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTextField jefesito;
     private javax.swing.JFormattedTextField jf_edad;
     private javax.swing.JTextField jt_nombre;
+    private javax.swing.JRadioButton licenciatura;
     private javax.swing.JList<String> lista_maestro;
+    private javax.swing.JList<String> listacarrera;
     private javax.swing.JList<String> listaclase;
     private javax.swing.JList<String> listaestudiantes;
     private javax.swing.JRadioButton rbd_1;
