@@ -16,17 +16,19 @@ public class Estudiantes {
     protected String sexo;
     protected int edad;
     protected int codigo;
+    protected String carrera;
 
     public Estudiantes() {
 
     }
 
-    public Estudiantes(String nombre, String apellido, String sexo,int edad,int codigo) {
+    public Estudiantes(String nombre, String apellido, String sexo,int edad,int codigo,String carrera) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.sexo = sexo;
         this.edad= edad;
         this.codigo = codigo;
+        this.carrera= carrera;
        
     }
 
@@ -70,6 +72,15 @@ public class Estudiantes {
         this.codigo = codigo;
     }
 
+    public String getCarrera() {
+        return carrera;
+    }
+
+    public void setCarrera(String carrera) {
+        this.carrera = carrera;
+    }
+    
+    
     @Override
     public String toString() {
         return  nombre;
