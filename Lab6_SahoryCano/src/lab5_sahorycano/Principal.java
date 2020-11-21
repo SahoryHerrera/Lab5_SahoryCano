@@ -63,10 +63,14 @@ public class Principal extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jList2 = new javax.swing.JList<>();
+        lista_maestro = new javax.swing.JList<>();
         jLabel27 = new javax.swing.JLabel();
         jLabel28 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
+        btn_agregarmaestro = new javax.swing.JButton();
+        Apellidos = new javax.swing.JTextField();
+        Nombre = new javax.swing.JTextField();
+        edad = new javax.swing.JFormattedTextField();
+        Salario = new javax.swing.JFormattedTextField();
         jPanel5 = new javax.swing.JPanel();
         jPanel10 = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
@@ -137,6 +141,7 @@ public class Principal extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel9.setText("Agregar Alumno");
 
+        listaestudiantes.setModel(new DefaultListModel());
         jScrollPane1.setViewportView(listaestudiantes);
 
         jLabel26.setText("Listar Alumno");
@@ -255,19 +260,29 @@ public class Principal extends javax.swing.JFrame {
 
         jLabel13.setText("Salario:");
 
-        jScrollPane2.setViewportView(jList2);
+        lista_maestro.setModel(new DefaultListModel());
+        jScrollPane2.setViewportView(lista_maestro);
 
         jLabel27.setText("Listar Maestro");
 
         jLabel28.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel28.setText("Agregar Maestro");
 
-        jButton3.setText("Agregar Maestro");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+        btn_agregarmaestro.setText("Agregar Maestro");
+        btn_agregarmaestro.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_agregarmaestroMouseClicked(evt);
             }
         });
+        btn_agregarmaestro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_agregarmaestroActionPerformed(evt);
+            }
+        });
+
+        edad.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
+
+        Salario.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
@@ -286,9 +301,9 @@ public class Principal extends javax.swing.JFrame {
                     .addGroup(jPanel9Layout.createSequentialGroup()
                         .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel9Layout.createSequentialGroup()
-                                .addContainerGap(160, Short.MAX_VALUE)
-                                .addComponent(jButton3)
-                                .addGap(78, 78, 78))
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btn_agregarmaestro)
+                                .addGap(12, 12, 12))
                             .addGroup(jPanel9Layout.createSequentialGroup()
                                 .addGap(64, 64, 64)
                                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -296,9 +311,19 @@ public class Principal extends javax.swing.JFrame {
                                     .addComponent(jLabel12)
                                     .addComponent(jLabel11)
                                     .addComponent(jLabel10))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addGap(36, 36, 36)
+                                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(Salario, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(edad, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(Apellidos, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(66, 66, 66)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(45, 45, 45))
+            .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel9Layout.createSequentialGroup()
+                    .addGap(147, 147, 147)
+                    .addComponent(Nombre)
+                    .addGap(383, 383, 383)))
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -311,18 +336,29 @@ public class Principal extends javax.swing.JFrame {
                     .addGroup(jPanel9Layout.createSequentialGroup()
                         .addGap(28, 28, 28)
                         .addComponent(jLabel10)
-                        .addGap(47, 47, 47)
-                        .addComponent(jLabel11)
+                        .addGap(44, 44, 44)
+                        .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel11)
+                            .addComponent(Apellidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(42, 42, 42)
+                        .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel12)
+                            .addComponent(edad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(48, 48, 48)
-                        .addComponent(jLabel12)
-                        .addGap(54, 54, 54)
-                        .addComponent(jLabel13)
-                        .addGap(33, 33, 33)
-                        .addComponent(jButton3))
+                        .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel13)
+                            .addComponent(Salario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(30, 30, 30)
+                        .addComponent(btn_agregarmaestro))
                     .addGroup(jPanel9Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(83, Short.MAX_VALUE))
+            .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel9Layout.createSequentialGroup()
+                    .addGap(119, 119, 119)
+                    .addComponent(Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(317, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -699,9 +735,9 @@ public class Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnagregar_EstudianteActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void btn_agregarmaestroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_agregarmaestroActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_btn_agregarmaestroActionPerformed
 
     private void btn_clasesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_clasesMouseClicked
         // TODO add your handling code here:
@@ -748,8 +784,9 @@ public class Principal extends javax.swing.JFrame {
             int codigo;
 
             codigo = 10000 + R.nextInt(10000001);
+
             DefaultListModel modelo = (DefaultListModel) listaestudiantes.getModel();
-            
+
             if (jRadioButton4.isSelected()) {
                 sexo = "F";
             } else {
@@ -765,8 +802,7 @@ public class Principal extends javax.swing.JFrame {
             jt_nombre.setText("");
             apellido.setText("");
             jf_edad.setText("");
-            
-            
+
         } catch (Exception e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(this, "Ocurrio un error y no se guardaron los datos");
@@ -774,6 +810,27 @@ public class Principal extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_btnagregar_EstudianteMouseClicked
+
+    private void btn_agregarmaestroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_agregarmaestroMouseClicked
+        // TODO add your handling code here:
+
+        DefaultListModel modelo
+                = (DefaultListModel) lista_maestro.getModel();
+
+        modelo.addElement(new Maestros(Nombre.getText(),
+                Apellidos.getText(),
+                Integer.parseInt(this.edad.getText()),
+                Integer.parseInt(this.Salario.getText()))
+        );
+
+       lista_maestro.setModel(modelo);
+        Nombre.setText("");
+        Apellidos.setText("");
+        edad.setText("");
+        Salario.setText("");
+
+
+    }//GEN-LAST:event_btn_agregarmaestroMouseClicked
 
     /**
      * @param args the command line arguments
@@ -811,13 +868,17 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField Apellidos;
     private javax.swing.ButtonGroup Genero;
+    private javax.swing.JTextField Nombre;
+    private javax.swing.JFormattedTextField Salario;
     private javax.swing.JTextField apellido;
+    private javax.swing.JButton btn_agregarmaestro;
     private javax.swing.JButton btn_clases;
     private javax.swing.JButton btnagregar_Estudiante;
+    private javax.swing.JFormattedTextField edad;
     private javax.swing.ButtonGroup grupo_clases;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton3;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JComboBox<String> jComboBox3;
@@ -847,7 +908,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JList<String> jList2;
     private javax.swing.JList<String> jList3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
@@ -877,6 +937,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JFormattedTextField jf_edad;
     private javax.swing.JTextField jt_nombre;
+    private javax.swing.JList<String> lista_maestro;
     private javax.swing.JList<String> listaclase;
     private javax.swing.JList<String> listaestudiantes;
     private javax.swing.JRadioButton rbd_1;
